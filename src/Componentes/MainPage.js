@@ -21,7 +21,7 @@ export default function MainPage() {
         <>
             <h2>Selecione o filme</h2>
             <main>
-                {movies.map(movie => <Poster urlPoster={movie.posterURL} movieName={movie.title} idMovie={movie.id} />)}
+                {movies.map(movie => <Poster key={movie.id} urlPoster={movie.posterURL} movieName={movie.title} idMovie={movie.id} />)}
             </main>
         </>
 

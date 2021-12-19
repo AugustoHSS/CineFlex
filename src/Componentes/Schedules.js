@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
+import Footer from './Footer';
 
 export default function Schedules() {
-    const { movieId } = useParams()
+    const { movieId } = useParams();
     const [sessions, setSession] = useState(null);
 
     useEffect(() => {
@@ -17,30 +18,24 @@ export default function Schedules() {
     if (!sessions) {
         return <h2>carregando</h2>;
     }
-
-
     return (
         <Container>
             <h2>Selecione o horário</h2>
-            {sessions.days.map(session => <MovieSessions session={session} />)}
-            <Footer />
+            {sessions.days.map(session => <MovieSessions session={session} id={sessions.id} />)}
+            <Footer posterURL={sessions.posterURL} title={sessions.title} />
         </Container>
     )
 }
 
-function MovieSessions({ session }) {
+function MovieSessions({ session, id }) {
     return (
         <MovieSession>
             <When>{session.weekday} - {session.date}</When>
             <Schedule>
-                {session.showtimes.map((showtime) => <Link to={"/assentos/" + showtime.id}><Time>{showtime.name}</Time></Link>)}
+                {session.showtimes.map((showtime) => <Link to={`/sessoes/${id}/assentos/${showtime.id}`}><Time key={showtime.id}>{showtime.name}</Time></Link>)}
             </Schedule>
         </MovieSession>
     )
-}
-
-function Footer() {
-    return ("ff")
 }
 
 const Schedule = styled.div`
@@ -51,6 +46,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 117px;
 `
 
 const MovieSession = styled.div`
@@ -71,6 +67,7 @@ const Time = styled.p`
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none
 `
 const When = styled.p`
     font-size: 20px;
