@@ -21,7 +21,7 @@ export default function Schedules() {
     return (
         <Container>
             <h2>Selecione o horário</h2>
-            {sessions.days.map(session => <MovieSessions session={session} id={sessions.id} />)}
+            {sessions.days.map(session => <MovieSessions session={session} id={sessions.id} key={session.id} />)}
             <Footer posterURL={sessions.posterURL} title={sessions.title} />
         </Container>
     )
@@ -32,7 +32,7 @@ function MovieSessions({ session, id }) {
         <MovieSession>
             <When>{session.weekday} - {session.date}</When>
             <Schedule>
-                {session.showtimes.map((showtime) => <Link to={`/sessoes/${id}/assentos/${showtime.id}`}><Time key={showtime.id}>{showtime.name}</Time></Link>)}
+                {session.showtimes.map((showtime, i) => <Link key={i} to={`/sessoes/${id}/assentos/${showtime.id}`}><Time key={i}>{showtime.name}</Time></Link>)}
             </Schedule>
         </MovieSession>
     )

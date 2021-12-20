@@ -54,3 +54,17 @@ h2 {
     width: 129px;
     height: 193px;
 }
+
+.avaliable {
+    background: #C3CFD9;
+    border: 1px solid #7B8B99;
+}
+
+.selected {
+    background: #8DD7CF;
+    border: 1px solid #1AAE9E;
+}
+
+a {
+    text-decoration: none;
+}

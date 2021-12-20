@@ -4,6 +4,7 @@ import Header from "./Componentes/Header.js"
 import MainPage from "./Componentes/MainPage.js"
 import Schedules from "./Componentes/Schedules.js"
 import TicketSeatMap from "./Componentes/TicketSeatMap.js"
+import Success from "./Componentes/Success.js"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
                     <Route path="/" element={<MainPage />}></Route>
                     <Route path="/sessoes/:movieId" element={<Schedules />}></Route>
                     <Route path="/sessoes/:movieId/assentos/:sessionId" element={<TicketSeatMap />}></Route>
+                    <Route path="/sucesso" element={<Success />}></Route>
                 </Routes>
             </BrowserRouter>
         </>
