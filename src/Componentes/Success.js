@@ -16,8 +16,8 @@ export default function Success() {
             <Titles>Ingressos</Titles>
             {state.seats.map((seat) => <Informations key={seat}>Assento {seat}</Informations>)}
             <Titles>Comprador</Titles>
-            <Informations>Nome: {state.buyersName}</Informations>
-            <Informations>CPF: {state.buyersCpf}</Informations>
+            <Informations>Nome: {state.buyerName}</Informations>
+            <Informations>CPF: {state.buyerCpf}</Informations>
             <Link to='/'>
                 <Button>Voltar pra Home</Button>
             </Link>

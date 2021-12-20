@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import Footer from './Footer';
+import Loading from "./Loading"
 
 export default function Schedules() {
     const { movieId } = useParams();
@@ -16,7 +17,7 @@ export default function Schedules() {
     }, []);
 
     if (!sessions) {
-        return <h2>carregando</h2>;
+        return <Loading></Loading>
     }
     return (
         <Container>

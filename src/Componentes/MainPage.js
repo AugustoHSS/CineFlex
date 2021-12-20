@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
+import Loading from "./Loading"
 
 import Poster from './Poster.js'
 
@@ -15,7 +15,7 @@ export default function MainPage() {
     }, []);
 
     if (!movies) {
-        return <h2>carregando</h2>;
+        return <Loading></Loading>;
     }
 
     return (

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Footer from './Footer';
 import styled from 'styled-components';
 import axios from 'axios';
+import Loading from "./Loading"
 
 export default function TicketSeatMap() {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function TicketSeatMap() {
         });
     }, []);
     if (!movieSeats) {
-        return <h2>carregando</h2>;
+        return <Loading></Loading>;
     }
     function toggleSeatSelected(e, id, name) {
         if (!idsSeatsSelected.includes(id)) {
@@ -48,7 +49,7 @@ export default function TicketSeatMap() {
                     seats: nameSeatsSelected,
                 }
             }))
-            idsSeatsSelected([])
+            setIdsSeatsSelected([])
             setNameSeatsSelected([])
             setBuyerCpf("")
             setBuyerName("")
